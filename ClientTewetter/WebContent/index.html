@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Client Twitter Application</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Client Twitter</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<br />
+<br />
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Client Twitter</h1>
+      </div>
+		<form action="postMessage" method="post">
+		  <div class="form-group">
+		   <label for="employeename">Employee Name</label>   
+		  <input type="text" class="form-control" id="employee" name="employeename" placeholder="name" min="1" max="100">  
+		  <br>
+		  <br>
+		  <br>
+		  <br>
+		  <label for="message">Message</label>   
+		  <input type="text" class="form-control" id="message" name="message" placeholder="type your message" min="1" max="100">  
+		  </div>  
+		   <button type="submit" class="btn btn-primary" >Post</button>
+		</form>
+	<!--  -->	
+    </div><!-- /.container -->
+</body>
+</html>
