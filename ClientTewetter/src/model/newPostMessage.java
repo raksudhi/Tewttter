@@ -1,7 +1,7 @@
 package model;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -14,22 +14,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Timestamp;
-//import com.sun.jmx.snmp.Timestamp;
 
-
-import model.Twitter;
 /**
- * Servlet implementation class postMessage
+ * Servlet implementation class newPostMessage
  */
-@WebServlet("/postMessage")
-public class postMessage extends HttpServlet {
+@WebServlet("/newPostMessage")
+public class newPostMessage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public postMessage() {
+    public newPostMessage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,59 +43,41 @@ public class postMessage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	
+
+		List<Twitter> twitter = getMessageAndName();
 		
-		String name = request.getParameter("employeename");
-		
-		String message = request.getParameter("message");
-		
-		EntityManager em = mytools.DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
-		trans.begin();
-		
-		
+		String tableInfo_1 = " ";
+		String tableInfo_2 = " ";
 		//System.out.println("Hello World");
 		try
 		{
-			Date date= new Date();
-			Timestamp postdate = new Timestamp(date.getTime());
-			model.Twitter messagingService= new model.Twitter();
-			messagingService.setName(name);
-			messagingService.setMessage(message);
-			messagingService.setPostdate(postdate);
-			 
-			em.persist(messagingService);
 			
-			trans.commit();
+			System.out.println(twitter.get(0).getName());
+		
+			tableInfo_1 = "Name: " + twitter.get(0).getName();
+			tableInfo_2 = "Post: # " + twitter.get(0).getMessage() + " # ";
 			
+			request.setAttribute("tableInfo1", tableInfo_1);
+			request.setAttribute("tableInfo2", tableInfo_2);
 			
 		}
 		catch(Exception e)
 		{
 			System.out.println(e);
-			trans.rollback();
-		}
-		finally
-		{
-			em.close();
 		}
 		
-		
-		List<Twitter> twitter = getMessageAndName();
-		
-		request.setAttribute("twitter", twitter);
 		
 		getServletContext()
-		.getRequestDispatcher("/displayPost")
+		.getRequestDispatcher("/newPostDisplay.jsp")
 		.forward(request, response);
-		
 	}
-	
 	
 	protected static List<Twitter> getMessageAndName()
 	{
 		
 		EntityManager em = mytools.DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT p FROM  Twitter p";
+		String qString = "SELECT p FROM  Twitter p  order by p.slid desc";
 		TypedQuery<Twitter> q = em.createQuery(qString, Twitter.class);
 	
 		List<Twitter> i = null;
@@ -125,8 +103,5 @@ public class postMessage extends HttpServlet {
 		
 		return i;
 	}
-	
-	
-	
 
 }

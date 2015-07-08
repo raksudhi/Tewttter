@@ -53,7 +53,7 @@ public class displayPost extends HttpServlet {
 		
 			
 			int numberOfElements = twitter.size();
-			System.out.println(numberOfElements);
+		
 			
 			
 			request.setAttribute("twitter", twitter);
@@ -77,9 +77,9 @@ public class displayPost extends HttpServlet {
 	{
 		
 		EntityManager em = mytools.DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT p FROM  Twitter p order by p.postdate desc";
+		String qString = "SELECT p FROM  Twitter p";
 		TypedQuery<Twitter> q = em.createQuery(qString, Twitter.class);
-	//	q.setParameter("prodID", Long.parseLong(prodID));
+	
 		List<Twitter> i = null;
 		try
 		{

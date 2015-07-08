@@ -13,6 +13,15 @@
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<script>
+	function login() 
+	{
+	    window.location.assign("http://localhost:8080/ClientTewetter/newPostMessage")
+	}
+	
+</script>
+	
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -24,14 +33,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Client Twitter</a>
-        </div>
+         <!-- <a class="navbar-brand" onclick="login()">Newest Post</a>  --> 
+        
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
+            <li class="active"><a href="http://localhost:8080/ClientTewetter/newPostMessage">Newest Post</a></li>
+             <li class="active"><a href="index.html">Home</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+       	</div>   
+        
+
       </div>
+     </div>
     </nav>
 <br />
 <br />
@@ -53,6 +66,11 @@
 		  </div>  
 		   <button type="submit" class="btn btn-primary" >Post</button>
 		</form>
+		<br>
+		<br>
+	<!-- <form action="newPostMessage" method="post">
+		   <button type="submit" class="btn btn-primary" >Newest Post</button>
+		</form> -->	
 	<!--  -->	
     </div><!-- /.container -->
 </body>
